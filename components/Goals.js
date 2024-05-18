@@ -2,10 +2,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartPulse } from "@fortawesome/free-solid-svg-icons";
 
-let cnt = 0;
 const Goals = ({ setValue, setChecked, checked, setIsChecked, value }) => {
+  let cnt = value * 0.05;
+
   const handleCheckbox = (id) => {
-    if (cnt > 5) cnt = 0;
+    
     setChecked((prevChecked) =>
       prevChecked.map((item, index) => (index === id ? !item : item))
     );
@@ -14,7 +15,6 @@ const Goals = ({ setValue, setChecked, checked, setIsChecked, value }) => {
       cnt++;
     }
 
-    
     cnt === 5 ? setIsChecked(true) : setIsChecked(false);
 
     setValue((cnt / 5) * 100);

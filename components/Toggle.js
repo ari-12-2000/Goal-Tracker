@@ -10,7 +10,7 @@ const Toggle = ({setChecked, setValue, isChecked, setIsChecked}) => {
    if(!isChecked)
     setChecked((prevChecked) =>
       prevChecked.map((item) =>item=true)
-    );
+    )
     else 
      setChecked((prevChecked) =>
       prevChecked.map((item) =>item=!item)
