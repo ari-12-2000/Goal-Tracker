@@ -2,15 +2,23 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-const Toggle = ({setChecked, setValue}) => {
-  const [isChecked, setIsChecked] = useState(false);
+const Toggle = ({setChecked, setValue, isChecked, setIsChecked}) => {
+  
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
+   if(!isChecked)
     setChecked((prevChecked) =>
+      prevChecked.map((item) =>item=true)
+    );
+    else 
+     setChecked((prevChecked) =>
       prevChecked.map((item) =>item=!item)
     );
+   if(!isChecked) 
     setValue(100);
+   else
+     setValue(0);
   };
 
   return (

@@ -1,13 +1,11 @@
 "use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartPulse } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 
-
-const Goals = ({ setValue, setChecked, checked ,cnt}) => {
-  
-
+let cnt = 0;
+const Goals = ({ setValue, setChecked, checked, setIsChecked, value }) => {
   const handleCheckbox = (id) => {
+    if (cnt > 5) cnt = 0;
     setChecked((prevChecked) =>
       prevChecked.map((item, index) => (index === id ? !item : item))
     );
@@ -15,13 +13,17 @@ const Goals = ({ setValue, setChecked, checked ,cnt}) => {
     else {
       cnt++;
     }
+
+    
+    cnt === 5 ? setIsChecked(true) : setIsChecked(false);
+
     setValue((cnt / 5) * 100);
   };
 
   return (
     <>
       <div className="flex justify-between mt-4">
-        <p className="text-white">Today's goal</p>
+        <p className="text-white">Today&apos;s goal</p>
         <FontAwesomeIcon
           icon={faHeartPulse}
           className="text-red-500 h-6 heart"

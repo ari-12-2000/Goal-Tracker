@@ -6,10 +6,10 @@ import ProgressBar from "@/components/ProgressBar";
 import Toggle from "@/components/Toggle";
 import { useState } from "react";
 
-let cnt = 0;
-const page = () => {
+const Page = () => {
   const [value, setValue] = useState(0);
   const [checked, setChecked] = useState([false, false, false, false, false]);
+  const [isChecked, setIsChecked] = useState(false);
 
   return (
     <div className="mx-auto p-6 bg-zinc-950 h-auto w-full md:max-w-[500px]">
@@ -29,16 +29,11 @@ const page = () => {
 
         <ProgressBar value={value} />
       </div>
-      <Goals
-        setValue={setValue}
-        setChecked={setChecked}
-        checked={checked}
-        cnt={cnt}
-      />
-      <Toggle setChecked={setChecked} setValue={setValue} />
+      <Goals setValue={setValue} setChecked={setChecked} checked={checked}  setIsChecked={setIsChecked} value={value}/>
+      <Toggle setChecked={setChecked} setValue={setValue} isChecked={isChecked} setIsChecked={setIsChecked}/>
       <CustomBarChart value={value} />
     </div>
   );
 };
 
-export default page;
+export default Page;
